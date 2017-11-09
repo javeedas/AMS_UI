@@ -28,8 +28,95 @@
         </div>
     </div>
     <div class="container body-content" ng-controller="amsCtrl">
-        <p>{{message}}</p>
-        <p>{{4*8}}</p>
+        <form name="atdForm" class="form-horizontal atd-form" novalidate>
+            <div class="container">
+
+                <!--Class-->
+                <div class="row">
+                    <div class="form-group">
+                        <label for="name" class="col-md-4 control-label">Class</label>
+                        <div class="col-md-4">
+                            <select ng-model="selectedClass"
+                                    ng-init="selectedClass = null"
+                                    ng-change="onClassChange(selectedClass)"
+                                    class="form-control" id="class">
+                                <option value="">--Select class--</option>
+                                <option ng-repeat="class in data">{{class.class}}</option>
+                            </select>
+                            
+                        </div>
+                    </div>
+                </div>
+                <!--Section-->
+                <div class="row">
+                    <div class="form-group">
+                        <label for="username" class="col-md-4 control-label">Section</label>
+                        <div class="col-md-4">
+                            <select ng-model="selectedSection"
+                                    ng-init="selectedSection = null"
+                                    ng-change="onSectionChange(selectedSection)"
+                                    class="form-control" id="section">
+                                <option value="">--Select Section--</option>
+                                <option ng-repeat="section in data">{{section.section}}</option>
+                            </select>
+                            
+
+                        </div>
+                    </div>
+                </div>
+                <!--Student-->
+                <div class="row">
+                    <div class="form-group">
+                        <label for="password" class="col-md-4 control-label">Student</label>
+                        <div class="col-md-4">
+                            <select ng-model="selectedStudent"
+                                    ng-init="selectedStudent = null"
+                                    class="form-control" id="student">
+                                <option value="">--Select Student--</option>
+                                <option ng-repeat="student in data.students">{{student.id}}</option>
+                            </select>
+                            
+
+                        </div>
+
+                    </div>
+                </div>
+                
+                <!--Present or Absent-->
+                <div class="row">
+                    <div class="form-group">
+                        <label for="" class="col-md-4 control-label">Attendence:</label>
+                        <div class="col-md-4">
+                            <label class="radio-inline">
+                                <input type="radio" name="role" id="present" value="present" ng-model="Present" ng-required="present !=''">Present
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="role" id="absent" value="absent" ng-model="Absent" ng-required="absent != ''">Absent
+                            </label>
+
+                        </div>
+                    </div>
+                </div>
+              
+
+                <!--submit and reset-->
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label"></label>
+                        <div class="col-md-4">
+                            <button type="submit" id="btnsubmiteForm" class="btn btn-success" ng-disabled="atdForm.$invalid" ng-click="addUser()">Submit</button>
+                            <button type="reset" id="btnresetForm" class="btn btn-danger" ng-click="reset()">Reset</button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+
+        </form>
     </div>
 </body>
 </html>
